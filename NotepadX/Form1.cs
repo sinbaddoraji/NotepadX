@@ -41,7 +41,7 @@ namespace NotepadX
             }
 
            
-            this.BackColor = Color.FromName(Theme.Instance.BackgroundColourHex);
+            //this.BackColor = Color.FromName(Theme.Instance.BackgroundColourHex);
 
 
             this.statusStrip1.BackColor = this.menuStrip1.BackColor = Color.FromName(Theme.Instance.MenuBackgroundColorHex);
@@ -83,11 +83,21 @@ namespace NotepadX
                     Theme.Instance.FontSize);
 
                 tab.BackColor = Color.FromName(Theme.Instance.TextboxBackgroundColorHex);
-                tab.ForeColor = Color.FromName(Theme.Instance.TextboxForegroundColorHex);
+                tab.CustomTextBox.FastColoredTextBox.ForeColor =
+                    tab.ForeColor = Color.FromName(Theme.Instance.TextboxForegroundColorHex);
                 
 
-                tab.CustomTextBox.BackColor = tab.BackColor;
-                tab.CustomTextBox.ForeColor = tab.ForeColor;
+                tab.CustomTextBox.BackColor 
+                    = tab.CustomTextBox.FastColoredTextBox.BackColor
+                    = tab.BackColor;
+
+                tab.CustomTextBox.Rule.ForeColor 
+                    = tab.CustomTextBox.ForeColor 
+                        = tab.ForeColor;
+
+                tab.CustomTextBox.Rule.BackColor2
+                    = tab.CustomTextBox.Rule.BackColor
+                        = tab.BackColor;
             }
         }
 
