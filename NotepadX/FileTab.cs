@@ -29,7 +29,7 @@ namespace NotepadX
         }
         public CustomTextbox CustomTextBox { get; set; } = new CustomTextbox();
 
-        public FastColoredTextBox TextBox => CustomTextBox.FastColoredTextBox;
+        private FastColoredTextBox TextBox => CustomTextBox.FastColoredTextBox;
 
         private OpenFileDialog openFileDialog = new OpenFileDialog();
 

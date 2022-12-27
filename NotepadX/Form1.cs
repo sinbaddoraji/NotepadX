@@ -39,10 +39,13 @@ namespace NotepadX
 
                SaveThemeSettings();
             }
-            
 
-            this.menuStrip1.BackColor = Color.FromName(Theme.Instance.MenuBackgroundColorHex);
-            this.menuStrip1.ForeColor = Color.FromName(Theme.Instance.MenuForegroundColorHex);
+           
+            this.BackColor = Color.FromName(Theme.Instance.BackgroundColourHex);
+
+
+            this.statusStrip1.BackColor = this.menuStrip1.BackColor = Color.FromName(Theme.Instance.MenuBackgroundColorHex);
+            this.ForeColor = this.menuStrip1.ForeColor = this.statusStrip1.ForeColor = Color.FromName(Theme.Instance.MenuForegroundColorHex);
 
             FontDialog = FontDialog ?? new FontDialog();
             FontDialog.Font = Font;
@@ -78,6 +81,13 @@ namespace NotepadX
                         .FirstOrDefault(x => x.Name == FontDialog.Font.FontFamily.Name) ?? FontFamily.GenericSansSerif,
                     Theme.Instance.FontStyle,
                     Theme.Instance.FontSize);
+
+                tab.BackColor = Color.FromName(Theme.Instance.TextboxBackgroundColorHex);
+                tab.ForeColor = Color.FromName(Theme.Instance.TextboxForegroundColorHex);
+                
+
+                tab.CustomTextBox.BackColor = tab.BackColor;
+                tab.CustomTextBox.ForeColor = tab.ForeColor;
             }
         }
 
